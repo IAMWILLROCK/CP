@@ -1,25 +1,31 @@
 #include<iostream>
 using namespace std;
 
-int binary_Search(int input[],int low,int high,int element){
-	if(low>high){
-		return -1;
+int binarySearch(int arr[], int l, int r, int x)
+{
+	while (l <= r) {
+		int m = l + (r - l) / 2;
+
+		// Check if x is present at mid
+		if (arr[m] == x)
+			return m;
+
+		// If x greater, ignore left half
+		if (arr[m] < x)
+			l = m + 1;
+
+		// If x is smaller, ignore right half
+		else
+			r = m - 1;
 	}
-	int mid = (low + high)/2;
-	if(input[mid] == element){
-		return mid;
-	}
-	if(input[mid]<element){
-	binary_Search(input,mid+1,high,element);	
-	}else{
-	binary_Search(input,low,mid-1,element);	
-	}
-	
-	
+
+	// if we reach here, then element was
+	// not present
+	return -1;
 }
 
 
-main(){
-	int arr[] = {1,2,3,4,5,6,7};
-	cout << binary_Search(arr,0,6,7);
+int main() {
+	int arr[] = {1, 1, 2, 9, 9};
+	cout << binarySearch(arr, 0, 4, 9);
 }
