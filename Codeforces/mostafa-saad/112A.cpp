@@ -29,6 +29,7 @@ int main() {
 		} else if (a < b) {
 			cout << -1;
 			break;
+
 		}
 	}
 	if (a == b)
