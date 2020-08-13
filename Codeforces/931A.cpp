@@ -12,6 +12,7 @@ int main() {
 #endif
 	int a, b;
 	cin >> a >> b;
+
 	int x1, x2;
 	bool flag = a > b;
 	if (!flag) {
