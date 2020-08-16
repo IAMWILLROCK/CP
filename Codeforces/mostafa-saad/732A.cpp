@@ -21,18 +21,20 @@ typedef vector<vi> vvi;
 #define LSOne(S) (S & (-S))
 #define isBitSet(S, i) ((S >> i) & 1)
 
-string s;
+int k, r;
 
-int solve() {
-	int ans = 0;
-	int prev = 1;
-	for (int i = 0; i < s.length(); i++) {
-		int curr = s[i] + 1 - 'a';
-		ans += min(abs(curr - prev) , 26 - abs(curr - prev) );
-		prev = curr;
-
+void solve() {
+	cin >> k >> r;
+	int A = 0;
+	ll ans = 0;
+	while (1) {
+		ans += k; A++;
+		// cout << ans << endl;
+		if (ans % 10 == 0 || ans % 10 == r) {
+			cout << A;
+			break;
+		}
 	}
-	return ans;
 }
 
 int main() {
@@ -42,6 +44,10 @@ int main() {
 	freopen("input.txt", "r", stdin);
 	freopen("output.txt", "w", stdout);
 #endif
-	cin >> s;
-	cout << solve();
+
+	// int tc; cin >> tc;
+	// for (int t = 1; t <= tc; t++) {
+	//cout << "Case #" << t  << ": ";
+	solve();
+	// }
 }

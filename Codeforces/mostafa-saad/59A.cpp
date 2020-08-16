@@ -23,16 +23,43 @@ typedef vector<vi> vvi;
 
 string s;
 
-int solve() {
-	int ans = 0;
-	int prev = 1;
-	for (int i = 0; i < s.length(); i++) {
-		int curr = s[i] + 1 - 'a';
-		ans += min(abs(curr - prev) , 26 - abs(curr - prev) );
-		prev = curr;
-
+bool check(char c)
+{
+	if (c >= 'A' && c <= 'Z')
+		return true;
+	else
+		return false;
+}
+string solve() {
+	int cap, small;
+	cap = small = 0;
+	string str;
+	for (int i = 0; i < s.length(); ++i)
+	{
+		/* code */
+		if (check(s[i])) {
+			cap++;
+		} else {
+			small++;
+		}
 	}
-	return ans;
+	if (cap > small) {
+		for (int i = 0; i < s.length(); i++) {
+			if (check(s[i])) str += s[i];
+			else {
+				str += (s[i] - 'a' + 'A');
+			}
+		}
+		return str;
+	} else {
+		for (int i = 0; i < s.length(); i++) {
+			if (check(s[i]))  str += (s[i] - 'A' + 'a');
+			else {
+				str += s[i];
+			}
+		}
+		return str;
+	}
 }
 
 int main() {
@@ -42,6 +69,10 @@ int main() {
 	freopen("input.txt", "r", stdin);
 	freopen("output.txt", "w", stdout);
 #endif
+
+
+	//cout << "Case #" << t  << ": ";
 	cin >> s;
 	cout << solve();
+
 }
