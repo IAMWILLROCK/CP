@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+
+#define endl '\n'
+
+using namespace std;
+
+int main()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+#endif
+    int k, n, t;
+
+    cin >> t;
+    for (; t--;)
+    {
+        cin >> n >> k;
+
+        if (n < k)
+            cout << k - n << endl;
+
+        else if (n % 2 == k % 2)
+            cout << 0 << endl;
+
+        else
+            cout << 1 << endl;
+    }
+
+    return 0;
+}
