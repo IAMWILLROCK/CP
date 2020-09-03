@@ -1,4 +1,4 @@
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
 
@@ -26,27 +26,15 @@ typedef vector<vi> vvi;
 #define mm(X) memset((X), 0, sizeof((X)))
 
 
-
 void solve() {
-	int n;
-	cin >> n;
-	int a[n];
-	rep(i, 0, n)	cin >> a[i];
+	int a[4];
+	rep(i, 0, 4) cin >> a[i];
+	string s;
+	cin >> s;
 	int ans = 0;
-	for (int i = 0; i < n; i++) {
-		int temp = 1;
-		for (int j = i - 1; j >= 0; j--) {
-			if (a[j] <= a[j + 1]) temp++;
-			else break;
-		}
-		for (int k = i + 1; k < n; k++) {
-			if (a[k] <= a[k - 1])	temp++;
-			else break;
-		}
-		// cout << i + 1 << " " << temp << endl;
-		ans = max(temp, ans);
+	rep(i, 0, (int)s.length()) {
+		ans += a[(s[i] - '1')];
 	}
-
 	cout << ans;
 }
 

@@ -30,23 +30,24 @@ typedef vector<vi> vvi;
 void solve() {
 	int n;
 	cin >> n;
-	int a[n];
-	rep(i, 0, n)	cin >> a[i];
 	int ans = 0;
-	for (int i = 0; i < n; i++) {
-		int temp = 1;
-		for (int j = i - 1; j >= 0; j--) {
-			if (a[j] <= a[j + 1]) temp++;
-			else break;
-		}
-		for (int k = i + 1; k < n; k++) {
-			if (a[k] <= a[k - 1])	temp++;
-			else break;
-		}
-		// cout << i + 1 << " " << temp << endl;
-		ans = max(temp, ans);
-	}
+	int pos, neg;
+	pos = neg = 0;
+	rep(i, 0, n) {
+		int x;
+		cin >> x;
 
+		if (x == -1) neg++;
+		else pos += x;
+		int check = pos - neg;
+		if (check < 0) {
+			ans += -check;
+			neg -= -check;
+		} else {
+			pos -= check;
+			neg -= check;
+		}
+	}
 	cout << ans;
 }
 

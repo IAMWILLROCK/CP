@@ -24,29 +24,25 @@ typedef vector<vi> vvi;
 #define rep(i,a,n) for (int i=a;i<n;i++)
 #define pb push_back
 #define mm(X) memset((X), 0, sizeof((X)))
+#define deb(x) cout<<#x<<" "<<x<<endl;
 
 
 
 void solve() {
-	int n;
-	cin >> n;
-	int a[n];
-	rep(i, 0, n)	cin >> a[i];
+	string a, b;
+	cin >> a >> b;
 	int ans = 0;
-	for (int i = 0; i < n; i++) {
-		int temp = 1;
-		for (int j = i - 1; j >= 0; j--) {
-			if (a[j] <= a[j + 1]) temp++;
-			else break;
-		}
-		for (int k = i + 1; k < n; k++) {
-			if (a[k] <= a[k - 1])	temp++;
-			else break;
-		}
-		// cout << i + 1 << " " << temp << endl;
-		ans = max(temp, ans);
-	}
+	int hash1[26], hash2[26];
+	rep(i, 0, 26) hash1[i] = hash2[i] = 0;
+	rep(i, 0, (int)a.length())
+	hash1[a[i] - 'a']++;
+	rep(i, 0, (int)b.length())
+	hash2[b[i] - 'a']++;
 
+	rep(i, 0, 26) {
+		if (hash2[i] > 0 && hash1[i] == 0)
+			ans++;
+	}
 	cout << ans;
 }
 

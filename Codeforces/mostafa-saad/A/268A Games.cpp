@@ -1,4 +1,4 @@
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
 
@@ -25,28 +25,19 @@ typedef vector<vi> vvi;
 #define pb push_back
 #define mm(X) memset((X), 0, sizeof((X)))
 
-
+int n;
 
 void solve() {
-	int n;
 	cin >> n;
-	int a[n];
-	rep(i, 0, n)	cin >> a[i];
+	int a[n], b[n];
 	int ans = 0;
+	rep(i, 0, n) cin >> a[i] >> b[i];
 	for (int i = 0; i < n; i++) {
-		int temp = 1;
 		for (int j = i - 1; j >= 0; j--) {
-			if (a[j] <= a[j + 1]) temp++;
-			else break;
+			if (a[i] == b[j]) ans++;
+			if (b[i] == a[j]) ans++;
 		}
-		for (int k = i + 1; k < n; k++) {
-			if (a[k] <= a[k - 1])	temp++;
-			else break;
-		}
-		// cout << i + 1 << " " << temp << endl;
-		ans = max(temp, ans);
 	}
-
 	cout << ans;
 }
 
