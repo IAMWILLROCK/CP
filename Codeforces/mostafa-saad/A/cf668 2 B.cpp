@@ -29,26 +29,14 @@ typedef vector<vi> vvi;
 
 
 void solve() {
-	ll a, b, x, y, n;
-	cin >> a >> b >> x >> y >> n;
-	// ll small, big;
-
-	if (a > b) {
-		while (n--) {
-			if (b >= y)
-				b--;
-			else
-				a--;
-		}
-	} else {
-		while (n--) {
-			if (a >= x)
-				a--;
-			else
-				b--;
-		}
+	int n;
+	cin >> n;
+	ll coins = 0;
+	rep(i, 0, n) {
+		ll x; cin >> x;
+		coins = max(coins + x, 1LL * 0);
 	}
-	cout << 1LL * a*b << endl;
+	cout << coins << endl;
 }
 
 int main() {

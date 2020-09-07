@@ -27,28 +27,41 @@ typedef vector<vi> vvi;
 #define deb(x) cout<<#x<<" "<<x<<endl;
 
 
-
 void solve() {
-	ll a, b, x, y, n;
-	cin >> a >> b >> x >> y >> n;
-	// ll small, big;
+	int n, m;
+	cin >> n >> m;
+	bool primes[m + 1];
+	memset(primes, true, sizeof(primes));
 
-	if (a > b) {
-		while (n--) {
-			if (b >= y)
-				b--;
-			else
-				a--;
-		}
-	} else {
-		while (n--) {
-			if (a >= x)
-				a--;
-			else
-				b--;
+	for (int i = 2; i * i <= m; i++) {
+		if (primes[i] == true) {
+			for (int j = 2; i * j <= m; j++) {
+				primes[j * i] = false;
+			}
 		}
 	}
-	cout << 1LL * a*b << endl;
+	/*
+	for (int i = 0; i <= m; i++) {
+		cout << i << " " << primes[i] << endl;
+	}
+	*/
+	int first = 0;
+	for (int i = n + 1; i <= m; i++) {
+		if (primes[i] == true) {
+			first++;
+			if (first == 1 && i == m) {
+				cout << "YES";
+				return;
+			} else {
+				cout << "NO";
+				return;
+			}
+		}
+		if (primes[m] == false) {
+			cout << "NO";
+			return;
+		}
+	}
 }
 
 int main() {
@@ -59,9 +72,9 @@ int main() {
 	freopen("output.txt", "w", stdout);
 #endif
 
-	int tc; cin >> tc;
-	for (int t = 1; t <= tc; t++) {
-		//cout << "Case #" << t  << ": ";
-		solve();
-	}
+	// int tc; cin >> tc;
+	// for (int t = 1; t <= tc; t++) {
+	//cout << "Case #" << t  << ": ";
+	solve();
+	// }
 }

@@ -26,29 +26,20 @@ typedef vector<vi> vvi;
 #define mm(X) memset((X), 0, sizeof((X)))
 #define deb(x) cout<<#x<<" "<<x<<endl;
 
-
-
 void solve() {
-	ll a, b, x, y, n;
-	cin >> a >> b >> x >> y >> n;
-	// ll small, big;
-
-	if (a > b) {
-		while (n--) {
-			if (b >= y)
-				b--;
-			else
-				a--;
-		}
-	} else {
-		while (n--) {
-			if (a >= x)
-				a--;
-			else
-				b--;
+	ll l, r;
+	cin >> l >> r;
+	for (ll i = l; i <= r; i++) {
+		for (ll j = l; j <= r; j++) {
+			for (ll k = l; k <= r; k++) {
+				if (__gcd(i, j) == 1 && __gcd(j, k) == 1 && __gcd(i, k) != 1 && i < j && j < k ) {
+					cout << i << " " << j << " " << k;
+					return;
+				}
+			}
 		}
 	}
-	cout << 1LL * a*b << endl;
+	cout << -1;
 }
 
 int main() {
@@ -59,9 +50,9 @@ int main() {
 	freopen("output.txt", "w", stdout);
 #endif
 
-	int tc; cin >> tc;
-	for (int t = 1; t <= tc; t++) {
-		//cout << "Case #" << t  << ": ";
-		solve();
-	}
+	// int tc; cin >> tc;
+	// for (int t = 1; t <= tc; t++) {
+	//cout << "Case #" << t  << ": ";
+	solve();
+	// }
 }

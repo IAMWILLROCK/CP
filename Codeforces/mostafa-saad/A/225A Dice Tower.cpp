@@ -29,26 +29,17 @@ typedef vector<vi> vvi;
 
 
 void solve() {
-	ll a, b, x, y, n;
-	cin >> a >> b >> x >> y >> n;
-	// ll small, big;
-
-	if (a > b) {
-		while (n--) {
-			if (b >= y)
-				b--;
-			else
-				a--;
-		}
-	} else {
-		while (n--) {
-			if (a >= x)
-				a--;
-			else
-				b--;
+	int n; cin >> n;
+	int top; cin >> top;
+	while (n--) {
+		int a, b;
+		cin >> a >> b;
+		if (a == top || b == top || a == (7 - top) || b == (7 - top)) {
+			cout << "NO";
+			return;
 		}
 	}
-	cout << 1LL * a*b << endl;
+	cout << "YES";
 }
 
 int main() {
@@ -59,9 +50,9 @@ int main() {
 	freopen("output.txt", "w", stdout);
 #endif
 
-	int tc; cin >> tc;
-	for (int t = 1; t <= tc; t++) {
-		//cout << "Case #" << t  << ": ";
-		solve();
-	}
+	// int tc; cin >> tc;
+	// for (int t = 1; t <= tc; t++) {
+	//cout << "Case #" << t  << ": ";
+	solve();
+	// }
 }

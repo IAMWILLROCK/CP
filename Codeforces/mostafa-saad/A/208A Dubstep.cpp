@@ -29,26 +29,33 @@ typedef vector<vi> vvi;
 
 
 void solve() {
-	ll a, b, x, y, n;
-	cin >> a >> b >> x >> y >> n;
-	// ll small, big;
-
-	if (a > b) {
-		while (n--) {
-			if (b >= y)
-				b--;
-			else
-				a--;
-		}
-	} else {
-		while (n--) {
-			if (a >= x)
-				a--;
-			else
-				b--;
+	string s;
+	cin >> s;
+	int i = 0;
+	vector<string> v;
+	bool stop = false;
+	while (i < (int)s.length()) {
+		if (s.substr(i, 3) == "WUB") {
+			i += 3;
+		} else {
+			break;
 		}
 	}
-	cout << 1LL * a*b << endl;
+	while ()
+		bool first = true;
+	for (auto it : v) {
+
+		if (first) {
+			cout << it;
+			// cout << "First " << it << endl;
+			first = false;
+
+		} else {
+			cout << " " << it;
+		}
+
+
+	}
 }
 
 int main() {
@@ -59,9 +66,9 @@ int main() {
 	freopen("output.txt", "w", stdout);
 #endif
 
-	int tc; cin >> tc;
-	for (int t = 1; t <= tc; t++) {
-		//cout << "Case #" << t  << ": ";
-		solve();
-	}
+	// int tc; cin >> tc;
+	// for (int t = 1; t <= tc; t++) {
+	//cout << "Case #" << t  << ": ";
+	solve();
+	// }
 }

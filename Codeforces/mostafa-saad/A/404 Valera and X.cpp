@@ -29,26 +29,40 @@ typedef vector<vi> vvi;
 
 
 void solve() {
-	ll a, b, x, y, n;
-	cin >> a >> b >> x >> y >> n;
-	// ll small, big;
-
-	if (a > b) {
-		while (n--) {
-			if (b >= y)
-				b--;
-			else
-				a--;
-		}
-	} else {
-		while (n--) {
-			if (a >= x)
-				a--;
-			else
-				b--;
+	int n; cin >> n;
+	set<char> a;
+	set<char>b;
+	rep(i, 0, n) {
+		rep(j, 0, n) {
+			char c;
+			cin >> c;
+			/*
+			if ((i == j) || (i == (n - j + 1))) {
+				a.insert(c);
+				// cout << c << "a " << endl;
+			}
+			else {
+				b.insert(c);
+				// cout << c << "b " << endl;
+			}
+			*/
+			cout << c << endl;
 		}
 	}
-	cout << 1LL * a*b << endl;
+	cout << a.size() << " " << b.size() << endl;
+	if (a.size() == 1 && b.size() == 1) {
+		cout << "YES";
+	} else cout << "NO";
+	/*
+	for (auto it : a) {
+		cout << it << " ";
+	}
+	cout << endl;
+	*/
+	for (auto it : b) {
+		cout << it << " ";
+	}
+
 }
 
 int main() {
@@ -59,9 +73,9 @@ int main() {
 	freopen("output.txt", "w", stdout);
 #endif
 
-	int tc; cin >> tc;
-	for (int t = 1; t <= tc; t++) {
-		//cout << "Case #" << t  << ": ";
-		solve();
-	}
+	// int tc; cin >> tc;
+	// for (int t = 1; t <= tc; t++) {
+	//cout << "Case #" << t  << ": ";
+	solve();
+	// }
 }

@@ -26,29 +26,29 @@ typedef vector<vi> vvi;
 #define mm(X) memset((X), 0, sizeof((X)))
 #define deb(x) cout<<#x<<" "<<x<<endl;
 
+ll a[102];
+ll f[102];
 
-
-void solve() {
-	ll a, b, x, y, n;
-	cin >> a >> b >> x >> y >> n;
-	// ll small, big;
-
-	if (a > b) {
-		while (n--) {
-			if (b >= y)
-				b--;
-			else
-				a--;
-		}
-	} else {
-		while (n--) {
-			if (a >= x)
-				a--;
-			else
-				b--;
+bool valid(int n) {
+	for (int i = 0; i < n - 1; i++) {
+		if (a[i] + a[i + 1] != f[i]) {
+			return false;
 		}
 	}
-	cout << 1LL * a*b << endl;
+	return true;
+}
+
+void solve() {
+	int n;
+	cin >> n;
+	rep(i, 0, n)
+	cin >> a[i];
+
+	reverse(a, a + n);
+	rep(i, 0, n)
+	cout << a[i] << " ";
+	cout << endl;
+
 }
 
 int main() {
