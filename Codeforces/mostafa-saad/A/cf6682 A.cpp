@@ -27,16 +27,6 @@ typedef vector<vi> vvi;
 #define deb(x) cout<<#x<<" "<<x<<endl;
 
 ll a[102];
-ll f[102];
-
-bool valid(int n) {
-	for (int i = 0; i < n - 1; i++) {
-		if (a[i] + a[i + 1] != f[i]) {
-			return false;
-		}
-	}
-	return true;
-}
 
 void solve() {
 	int n;
