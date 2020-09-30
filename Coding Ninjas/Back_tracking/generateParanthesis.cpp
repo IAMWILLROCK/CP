@@ -12,7 +12,6 @@ void helper(int n, int open, int close, string op, vector<string> &ans) {
 	}
 
 	helper(n - 1, open - 1, close, op + '(', ans);
-
 	helper(n - 1, open, close - 1, op + ')', ans);
 }
 
