@@ -3,6 +3,26 @@ using namespace std;
 
 int dp[3001][3001];
 
+// Own LCS String builder
+string build(string s, string t, int n1, int n2){
+    string ans;
+    int i=n1, j=n2;
+    while(i>=0 && j>=0){
+        if((s[i-1] == t[j-1])&& (dp[i-1][j-1] + 1 > max(dp[i-1][j],dp[i][j-1]))){
+            ans+= s[i-1];
+            i--;j--;       
+        }else{
+            if(dp[i-1][j] > dp[i][j-1]){
+                i--;
+            }else{
+                j--;
+            }
+        }
+    }
+    reverse(ans.begin(), ans.end());
+    return ans;
+}
+
 vector<string> build(string s1, string s2, int n, int m) {
 	vector<string>ans;
 	if (m == 0 || n == 0) {
